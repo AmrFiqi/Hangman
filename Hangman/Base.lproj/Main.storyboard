@@ -15,38 +15,8 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FmQ-n0-ael">
-                                <rect key="frame" x="153.66666666666666" y="103" width="85.666666666666657" height="29"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Enter a letter" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahW-jR-2SF">
-                                <rect key="frame" x="135" y="552" width="123" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Answer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YoB-FD-wXb">
-                                <rect key="frame" x="149.33333333333334" y="288" width="94.333333333333343" height="35"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="FmQ-n0-ael" firstAttribute="centerX" secondItem="ahW-jR-2SF" secondAttribute="centerX" id="3z4-eV-IXJ"/>
-                            <constraint firstItem="YoB-FD-wXb" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="288" id="8o7-Oh-iv3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ahW-jR-2SF" secondAttribute="bottom" constant="232" id="9Ik-KC-cZL"/>
-                            <constraint firstItem="ahW-jR-2SF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="135" id="L0p-QT-pUZ"/>
-                            <constraint firstItem="FmQ-n0-ael" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="MRV-Wt-vmc"/>
-                            <constraint firstItem="YoB-FD-wXb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="SqW-6F-jvt"/>
-                            <constraint firstItem="FmQ-n0-ael" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jnf-pZ-Fo2"/>
-                            <constraint firstItem="FmQ-n0-ael" firstAttribute="centerX" secondItem="YoB-FD-wXb" secondAttribute="centerX" id="lpf-Sw-IQ0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YoB-FD-wXb" secondAttribute="trailing" id="yx9-U4-A7e"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OQd-P5-eFK"/>
                 </viewController>
