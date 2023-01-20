@@ -9,14 +9,14 @@ import UIKit
 
 class ViewController: UIViewController {
     var word = ""
+    var wordArray = [String]()
+    var correctAnswer = ""
+    var correctAnswerArray = [String]()
     var usedLetter = [String]()
     var wrongAnswers = 0
     var words = [String]()
-    var score = 0 {
-        didSet{
-            
-        }
-    }
+    var score = 0
+    var totalScore = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,25 +26,22 @@ class ViewController: UIViewController {
                 words = wordContent.components(separatedBy: "\n")
             }
         }
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(UsersInput))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Start Over", style: .plain, target: self, action: #selector(startOver))
         loadGame()
     }
     
     func loadGame (){
         let choosenWord = words.randomElement()
+        correctAnswer = choosenWord!
         for item in choosenWord! {
-            let strLetter = String(item)
-            
-            if usedLetter.contains(strLetter){
-                word += strLetter
-            }
-            else{
-                word += "?"
-            }
+            correctAnswerArray.append(String(item))
+            wordArray.append("?")
+            word += "?"
         }
-        title = "\(word) | Score:\(score)"
+        print(correctAnswerArray)
+        print(correctAnswer)
+        title = "\(word) | Score: \(score)"
         usedLetter.removeAll()
     }
     
@@ -62,18 +59,62 @@ class ViewController: UIViewController {
     }
     
     func submit (_ answer: String){
+        var lowAnswer = answer.lowercased()
+        usedLetter.append(lowAnswer)
         if answer.count > 1 || answer.count <= 0{
             let ac = UIAlertController(title: "Wrong Input", message: "Please enter only 1 character", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "Ok", style: .default))
             present(ac, animated: true)
         }
         else {
-            for item in word {
-                let tempWord = Character(answer)
-                if tempWord == item {
-                    
+            if correctAnswerArray.contains(answer){
+                for (index,item) in correctAnswer.enumerated() {
+                    if (Character(answer) == item){
+                        wordArray[index] = lowAnswer
+                        score += 1
+                        totalScore += 1
+                        print(wordArray)
+                    }
                 }
+                word = wordArray.joined()
+                print(word)
             }
+            else{
+                score -= 1
+                totalScore -= 1
+                wrongAnswers += 1
+            }
+            
+            title = "\(word) | Score: \(score)"
         }
+        checkdeath()
+        checkWin()
+    }
+    func checkWin(){
+        if (word == correctAnswer){
+            let ac = UIAlertController(title: "Good Job!", message: "You guessed the word correctly!\nTotal Score: \(totalScore)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Awesome!", style: .default ))
+            present(ac, animated: true)
+            startOver()
+           
+        }
+    }
+    
+    func checkdeath(){
+        if (wrongAnswers == correctAnswer.count){
+            let ac = UIAlertController(title: "You Died", message: "You have used all your chances!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Try Again", style: .default ))
+            present(ac, animated: true)
+            startOver()
+        }
+    }
+    
+    @objc func startOver(){
+        wrongAnswers = 0
+        score = 0
+        word.removeAll()
+        wordArray.removeAll()
+        correctAnswerArray.removeAll()
+        loadGame()
     }
 }
